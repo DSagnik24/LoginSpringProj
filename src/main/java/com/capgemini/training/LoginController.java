@@ -30,4 +30,21 @@ public class LoginController {
 		System.out.println("Emp Id : "+empId);
 		return "home.jsp";
 	}
+    @GetMapping("/forgotpassword")
+    public String forgotPasswordPage() {
+        return "forgotPassword.jsp";
+    }
+
+    @PostMapping("/resetpassword")
+    public String resetPassword(String email, String newpassword, String confirmpassword) {
+
+        System.out.println("Email : " + email);
+
+        if(newpassword.equals(confirmpassword)){
+            System.out.println("Password reset successful");
+            return "login.jsp";
+        }
+
+        return "forgotPassword.jsp";
+    }
 }
