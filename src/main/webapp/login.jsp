@@ -5,24 +5,27 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="login" method ="post">
-		<table>
-			<tr>
-				<td>User : </td>
-				<td><input type = "text" name="user"></input></td>
-			</tr>
-			<tr>
-				<td>Password</td>
-				<td><input type = "password" name="password"></input></td>
-			</tr>
-			<tr>
-				<td><input type = "submit" value = "Login"></input></td>
-				<td><input type = "reset" value = "Reset"></input></td>
-		</table>
-	</form>
+<form action="login" method="post">
+<table>
+<tr>
+<td>Email :</td>
+<td><input type="text" name="email"></td>
+</tr>
+
+<tr>
+<td>Password</td>
+<td><input type="password" name="password"></td>
+</tr>
+
+<tr>
+<td><input type="submit" value="Login"></td>
+<td><input type="reset" value="Reset"></td>
+</tr>
+</table>
+</form>
 	
 	
-	<a href="register.html">Sign Up</a>
+	<a href="register.jsp">Sign Up</a>
 	
 	<a href="forgotPassword.jsp">Forgot Password </a>
 </body>

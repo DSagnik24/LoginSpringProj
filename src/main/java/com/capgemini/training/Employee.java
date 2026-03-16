@@ -1,9 +1,13 @@
 package com.capgemini.training;
 
+import jakarta.persistence.Id;
+
 public class Employee {
-	
+
+    @Id
 	private String empId;
-	private String empName;
+
+    private String empName;
 	private String empEmail;
 	
 	public String getEmpId() {

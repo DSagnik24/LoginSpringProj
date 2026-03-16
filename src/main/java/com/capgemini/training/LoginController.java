@@ -1,47 +1,61 @@
 package com.capgemini.training;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 public class LoginController {
-	
-	@GetMapping("/")
-	public String loginPage() {
-		return "login.jsp";
-	}
-	
-	@PostMapping("/login")
-	public String validate(String user, String password) {
-		System.out.println(user);
-		System.out.println(password);
-		if(user.isEmpty()||password.isEmpty())
-			return "login.jsp";
-		return "home.jsp";
-	}
-	
-	@PostMapping("/register")
-	public String register(HttpServletRequest request){
-		String empId = request.getParameter("empId");
-		System.out.println("Emp Id : "+empId);
-		return "home.jsp";
-	}
+
+    @Autowired
+    LoginService service;
+
+    @GetMapping("/")
+    public String loginPage(){
+        return "login.jsp";
+    }
+
+    @PostMapping("/login")
+    public String validate(String email,String password){
+
+        UserEntity user = service.validateUser(email,password);
+
+        if(user!=null){
+            return "home.jsp";
+        }
+
+        return "login.jsp";
+    }
+
+    @PostMapping("/register")
+    public String register(String name,String email,String password){
+
+        UserEntity user = new UserEntity();
+
+        user.setName(name);
+        user.setEmail(email);
+        user.setPassword(password);
+
+        service.registerUser(user);
+
+        return "login.jsp";
+    }
+
     @GetMapping("/forgotpassword")
-    public String forgotPasswordPage() {
+    public String forgotPasswordPage(){
+
         return "forgotPassword.jsp";
     }
 
     @PostMapping("/resetpassword")
-    public String resetPassword(String email, String newpassword, String confirmpassword) {
-
-        System.out.println("Email : " + email);
+    public String resetPassword(String email,String newpassword,String confirmpassword){
 
         if(newpassword.equals(confirmpassword)){
-            System.out.println("Password reset successful");
+
+            service.updatePassword(email,newpassword);
+
             return "login.jsp";
         }
 
