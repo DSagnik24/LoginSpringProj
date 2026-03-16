@@ -13,8 +13,8 @@ public class LoginService {
         repo.save(user);
     }
 
-    public UserEntity validateUser(String email, String password){
-        return repo.findByEmailAndPassword(email,password);
+    public UserEntity validateUser(String name, String password){
+        return repo.findByNameAndPassword(name,password);
     }
 
     public UserEntity getUserByEmail(String email){

@@ -18,15 +18,15 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String validate(String email,String password){
+    public String validate(String name,String password){
 
-        UserEntity user = service.validateUser(email,password);
+        UserEntity user = service.validateUser(name,password);
 
-        if(user!=null){
+        if(user != null){
             return "home.jsp";
         }
 
-        return "login.jsp";
+        return "error.jsp";
     }
 
     @PostMapping("/register")
