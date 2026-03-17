@@ -1,4 +1,4 @@
-package com.capgemini.training;
+package com.capgemini.training.Entity;
 
 import jakarta.persistence.*;
 

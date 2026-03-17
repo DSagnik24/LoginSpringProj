@@ -1,5 +1,7 @@
-package com.capgemini.training;
+package com.capgemini.training.Controller;
 
+import com.capgemini.training.Service.LoginService;
+import com.capgemini.training.Entity.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,8 +34,11 @@ public class LoginController {
     @PostMapping("/register")
     public String register(String name,String email,String password){
 
-        UserEntity user = new UserEntity();
+        if(service.emailExists(email)){
+            return "userexists.jsp";   // show error page
+        }
 
+        UserEntity user = new UserEntity();
         user.setName(name);
         user.setEmail(email);
         user.setPassword(password);

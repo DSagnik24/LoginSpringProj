@@ -1,39 +1,120 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(120deg,#2980b9,#6dd5fa);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.container{
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0px 5px 20px rgba(0,0,0,0.2);
+    width:350px;
+}
+
+h2{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+table{
+    width:100%;
+}
+
+input[type=text],
+input[type=password],
+input[type=email]{
+    width:100%;
+    padding:8px;
+    margin:8px 0;
+    border-radius:5px;
+    border:1px solid #ccc;
+}
+
+input[type=submit]{
+    background:#2980b9;
+    color:white;
+    border:none;
+    padding:10px;
+    width:100%;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+input[type=submit]:hover{
+    background:#1c5f8a;
+}
+
+input[type=reset]{
+    margin-top:10px;
+    padding:8px;
+    width:100%;
+    border-radius:5px;
+}
+
+a{
+    display:block;
+    text-align:center;
+    margin-top:10px;
+    text-decoration:none;
+    color:#2980b9;
+}
+
+a:hover{
+    text-decoration:underline;
+}
+</style>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="register" method="post">
-    <table>
 
-    <tr>
-    <td>Username :</td>
-    <td><input type="text" name="name"></td>
-    </tr>
+<div class="container">
 
-    <tr>
-    <td>Email :</td>
-    <td><input type="email" name="email"></td>
-    </tr>
+<h2>Register</h2>
 
-    <tr>
-    <td>Password</td>
-    <td><input type="password" name="password"></td>
-    </tr>
+<form action="register" method="post">
 
-    <tr>
-    <td>Confirm Password</td>
-    <td><input type="password" name="confirmpassword"></td>
-    </tr>
+<table>
 
-    <tr>
-    <td><input type="submit" value="Register"></td>
-    <td><input type="reset" value="Reset"></td>
-    </tr>
+<tr>
+<td>Username</td>
+<td><input type="text" name="name"></td>
+</tr>
 
-    </table>
-    </form>
+<tr>
+<td>Email</td>
+<td><input type="email" name="email"></td>
+</tr>
+
+<tr>
+<td>Password</td>
+<td><input type="password" name="password"></td>
+</tr>
+
+<tr>
+<td>Confirm Password</td>
+<td><input type="password" name="confirmpassword"></td>
+</tr>
+
+<tr>
+<td colspan="2">
+<input type="submit" value="Register">
+</td>
+</tr>
+
+</table>
+
+</form>
+
+</div>
+
 </body>
 </html>

@@ -1,5 +1,7 @@
-package com.capgemini.training;
+package com.capgemini.training.Service;
 
+import com.capgemini.training.Repository.LoginRepository;
+import com.capgemini.training.Entity.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,10 @@ public class LoginService {
 
     public UserEntity getUserByEmail(String email){
         return repo.findByEmail(email);
+    }
+
+    public boolean emailExists(String email){
+        return repo.existsByEmail(email);
     }
 
     public void updatePassword(String email, String password){
