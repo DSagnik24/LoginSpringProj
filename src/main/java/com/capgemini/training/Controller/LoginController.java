@@ -21,14 +21,16 @@ public class LoginController {
 
     @PostMapping("/login")
     public String validate(String name,String password){
+        System.out.println(name);
+        System.out.println(password);
 
         UserEntity user = service.validateUser(name,password);
 
         if(user != null){
-            return "home.jsp";
+            return "redirect:/allEmp";
+        }else{
+            return "error.jsp";
         }
-
-        return "error.jsp";
     }
 
     @PostMapping("/register")

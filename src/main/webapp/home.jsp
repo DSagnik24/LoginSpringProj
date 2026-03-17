@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%@page import="java.util.List" %>
+<%@page import="com.capgemini.training.Entity.Employee" %>
 <html>
 <head>
 <style>
@@ -18,7 +18,7 @@ body{
     padding:30px;
     border-radius:10px;
     box-shadow:0px 5px 20px rgba(0,0,0,0.2);
-    width:350px;
+    width:600px;
 }
 
 h2{
@@ -28,61 +28,65 @@ h2{
 
 table{
     width:100%;
+    border-collapse: collapse;
 }
 
-input[type=text],
-input[type=password],
-input[type=email]{
-    width:100%;
+th, td{
     padding:8px;
-    margin:8px 0;
-    border-radius:5px;
+    text-align:center;
     border:1px solid #ccc;
 }
-
-input[type=submit]{
-    background:#2980b9;
-    color:white;
-    border:none;
-    padding:10px;
-    width:100%;
-    border-radius:5px;
-    cursor:pointer;
-}
-
-input[type=submit]:hover{
-    background:#1c5f8a;
-}
-
-input[type=reset]{
-    margin-top:10px;
-    padding:8px;
-    width:100%;
-    border-radius:5px;
-}
-
-a{
-    display:block;
-    text-align:center;
-    margin-top:10px;
-    text-decoration:none;
-    color:#2980b9;
-}
-
-a:hover{
-    text-decoration:underline;
-}
 </style>
+
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Home</title>
 </head>
+
 <body>
 
 <div class="container">
 
-<h2>Welcome to Home Page</h2>
+<h2>Employee List</h2>
 
-<p style="text-align:center;">Login Successful 🎉</p>
+<<%
+     List<Employee> listOfEmp = (List<Employee>)request.getAttribute("emplist");
+     String message = (String)request.getAttribute("message");
+ %>
+
+ <% if(message != null){ %>
+     <h3 style="color:red;"><%=message%></h3>
+ <% } %>
+
+<table>
+<tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Contact Number</th>
+    <th>City</th>
+</tr>
+
+<%
+    if(listOfEmp != null){
+        for (Employee emp : listOfEmp){
+%>
+<tr>
+    <td><%=emp.getId()%></td>
+    <td><%=emp.getEmpName()%></td>
+    <td><%=emp.getEmpEmail()%></td>
+    <td><%=emp.getEmpContactNumber()%></td>
+    <td><%=emp.getEmpCity()%></td>
+</tr>
+<%
+        }
+    } else {
+%>
+<tr>
+    <td colspan="5">No Employees Found</td>
+</tr>
+<% } %>
+
+</table>
 
 </div>
 
