@@ -14,8 +14,8 @@ public class EmployeeService {
     EmployeeRepository employeeRepository;
 
     // CREATE
-    public Employee saveEmployee(Employee emp){
-        return employeeRepository.save(emp);
+    public void saveEmployee(Employee emp){
+        employeeRepository.save(emp);
     }
 
     // READ ALL

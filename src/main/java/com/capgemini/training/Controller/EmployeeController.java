@@ -29,4 +29,19 @@ public class EmployeeController {
 
         return "home.jsp";
     }
+
+    @GetMapping("/addEmp")
+    public String createEmp(Employee emp){
+        service.saveEmployee(emp);
+        return "register-emp.jsp";
+    }
+
+    public String registerEmp(HttpServletRequest request){
+        String empId = request.getParameter("empId");
+        String empName = request.getParameter("empName");
+        String empEmail = request.getParameter("empEmail");
+        String contactNo = request.getAuthType();
+
+        return  "home.jsp";
+    }
 }
