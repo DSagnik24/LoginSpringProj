@@ -31,6 +31,9 @@ public class Employee {
         this.empCity = empCity;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getEmpName() {
         return empName;

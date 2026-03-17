@@ -31,17 +31,18 @@ public class EmployeeController {
     }
 
     @GetMapping("/addEmp")
-    public String createEmp(Employee emp){
-        service.saveEmployee(emp);
+    public String showAddEmpPage(){
         return "register-emp.jsp";
     }
 
-    public String registerEmp(HttpServletRequest request){
-        String empId = request.getParameter("empId");
-        String empName = request.getParameter("empName");
-        String empEmail = request.getParameter("empEmail");
-        String contactNo = request.getAuthType();
 
-        return  "home.jsp";
+    @PostMapping("/addEmp")
+    public String saveEmployee(Employee emp){
+
+        System.out.println("Contact: " + emp.getEmpContactNumber()); // debug
+
+        service.saveEmployee(emp);
+
+        return "redirect:/allEmp";
     }
 }

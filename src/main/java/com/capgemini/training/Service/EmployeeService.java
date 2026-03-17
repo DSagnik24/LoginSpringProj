@@ -13,12 +13,10 @@ public class EmployeeService {
     @Autowired
     EmployeeRepository employeeRepository;
 
-    // CREATE
     public void saveEmployee(Employee emp){
         employeeRepository.save(emp);
     }
 
-    // READ ALL
     public List<Employee> getAllEmployees(){
         return employeeRepository.findAll();
     }
