@@ -39,10 +39,33 @@ public class EmployeeController {
     @PostMapping("/addEmp")
     public String saveEmployee(Employee emp){
 
-        System.out.println("Contact: " + emp.getEmpContactNumber()); // debug
-
         service.saveEmployee(emp);
 
         return "redirect:/allEmp";
+    }
+
+    @PostMapping("/updateEmp")
+    public String updateEmployee(@RequestParam int id, Employee emp){
+
+        service.updateEmployee(id, emp);
+
+        return "redirect:/allEmp";
+    }
+
+    @GetMapping("/deleteEmp/{id}")
+    public String deleteEmployee(@PathVariable int id){
+
+        service.deleteEmployee(id);
+
+        return "redirect:/allEmp";
+    }
+
+    @GetMapping("/editEmp/{id}")
+    public String editEmployee(@PathVariable int id, HttpServletRequest request){
+
+        Employee emp = service.getEmployeeById(id);
+        request.setAttribute("emp", emp);
+
+        return "edit-emp.jsp";
     }
 }
