@@ -78,7 +78,7 @@ a{
     Employee emp = (Employee) request.getAttribute("emp");
 %>
 
-<form action="updateEmp" method="post">
+<form action="/updateEmp" method="post">
 
 <!-- 🔥 Hidden ID (VERY IMPORTANT) -->
 <input type="hidden" name="id" value="<%=emp.getId()%>">

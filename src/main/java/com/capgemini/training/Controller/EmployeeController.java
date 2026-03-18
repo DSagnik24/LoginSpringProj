@@ -27,12 +27,12 @@ public class EmployeeController {
             request.setAttribute("emplist", listOfEmp);
         }
 
-        return "home.jsp";
+        return "home";
     }
 
     @GetMapping("/addEmp")
     public String showAddEmpPage(){
-        return "register-emp.jsp";
+        return "register-emp";
     }
 
 
@@ -66,6 +66,6 @@ public class EmployeeController {
         Employee emp = service.getEmployeeById(id);
         request.setAttribute("emp", emp);
 
-        return "edit-emp.jsp";
+        return "edit-emp";
     }
 }
