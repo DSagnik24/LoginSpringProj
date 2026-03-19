@@ -1,37 +1,42 @@
 package com.capgemini.training.Exception;
 
-import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-@ControllerAdvice
+import java.util.HashMap;
+import java.util.Map;
+
+@RestControllerAdvice
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(EmployeeNotFoundException.class)
-    public String handleEmployeeNotFound(
-            EmployeeNotFoundException ex,
-            HttpServletRequest request){
+    public ResponseEntity<Map<String,Object>> handleNotFound(EmployeeNotFoundException ex){
 
-        request.setAttribute("message", ex.getMessage());
-        return "error";
+        Map<String,Object> error = new HashMap<>();
+        error.put("message", ex.getMessage());
+        error.put("status", 404);
+
+        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(InvalidInputException.class)
-    public String handleInvalidInput(
-            InvalidInputException ex,
-            HttpServletRequest request){
+    public ResponseEntity<Map<String,Object>> handleInvalid(InvalidInputException ex){
 
-        request.setAttribute("message", ex.getMessage());
-        return "home";
+        Map<String,Object> error = new HashMap<>();
+        error.put("message", ex.getMessage());
+        error.put("status", 400);
+
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 
-    // 🔥 Catch-all (very important)
     @ExceptionHandler(Exception.class)
-    public String handleGeneralException(
-            Exception ex,
-            HttpServletRequest request){
+    public ResponseEntity<Map<String,Object>> handleGeneral(Exception ex){
 
-        request.setAttribute("message", "Something went wrong!");
-        return "home";
+        Map<String,Object> error = new HashMap<>();
+        error.put("message", "Something went wrong");
+        error.put("status", 500);
+
+        return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

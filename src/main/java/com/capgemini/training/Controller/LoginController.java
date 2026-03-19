@@ -37,7 +37,7 @@ public class LoginController {
     public String register(String name,String email,String password){
 
         if(service.emailExists(email)){
-            return "userexists.jsp";   // show error page
+            return "userexists";   // show error page
         }
 
         UserEntity user = new UserEntity();
