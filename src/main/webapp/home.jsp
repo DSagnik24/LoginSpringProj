@@ -18,7 +18,7 @@ body{
     padding:30px;
     border-radius:10px;
     box-shadow:0px 5px 20px rgba(0,0,0,0.2);
-    width:700px;
+    width:750px;
 }
 
 h2{
@@ -55,11 +55,35 @@ a:hover{
 .add-btn{
     display:block;
     text-align:center;
-    margin-bottom:15px;
+    margin-bottom:10px;
     padding:8px;
     background:#27ae60;
     color:white;
     border-radius:5px;
+}
+
+/* 🔥 Search Bar Styling */
+.search-box{
+    text-align:center;
+    margin-bottom:15px;
+}
+
+.search-box input{
+    padding:8px;
+    margin:5px;
+    border-radius:5px;
+    border:1px solid #ccc;
+}
+
+.search-box input[type=submit]{
+    background:#2980b9;
+    color:white;
+    border:none;
+    cursor:pointer;
+}
+
+.search-box input[type=submit]:hover{
+    background:#1f6690;
 }
 </style>
 
@@ -75,6 +99,22 @@ a:hover{
 
 <!-- ✅ Add Employee Button -->
 <a href="addEmp" class="add-btn">+ Add Employee</a>
+
+<!-- 🔍 SEARCH FORM -->
+<div class="search-box">
+<form action="searchEmp" method="get">
+
+    <input type="text" name="id" placeholder="Search by ID">
+
+    <input type="text" name="name" placeholder="Search by Name">
+
+    <input type="submit" value="Search">
+
+    <!-- 🔄 Reset Button -->
+    <a href="allEmp">Reset</a>
+
+</form>
+</div>
 
 <%
     List<Employee> listOfEmp = (List<Employee>)request.getAttribute("emplist");

@@ -73,10 +73,39 @@ public class EmployeeController {
 
 
 
+
         @GetMapping("/view-emp/{id}")
         public String viewEmp(@PathVariable int id, Model model){
             Employee emp = service.getEmployeeById(id);
             model.addAttribute("emp", emp);
             return "view-emp";
         }
+
+    @GetMapping("/searchEmp")
+    public String searchEmployee(
+            @RequestParam(required = false) Integer id,
+            @RequestParam(required = false) String name,
+            HttpServletRequest request){
+
+        if(id != null){
+            Employee emp = service.getEmployeeById(id);
+
+            if(emp != null){
+                request.setAttribute("emplist", List.of(emp));
+            } else {
+                request.setAttribute("message", "Employee not found!");
+            }
+
+        } else if(name != null && !name.isEmpty()){
+            List<Employee> list = service.searchByName(name);
+
+            if(list.isEmpty()){
+                request.setAttribute("message", "No employees found!");
+            } else {
+                request.setAttribute("emplist", list);
+            }
+        }
+
+        return "home";
+    }
 }

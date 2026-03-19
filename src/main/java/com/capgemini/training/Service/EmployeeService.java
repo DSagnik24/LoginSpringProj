@@ -43,4 +43,10 @@ public class EmployeeService {
         return employeeRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Employee not found"));
     }
+
+    public List<Employee> searchByName(String name){
+        return employeeRepository.findByEmpNameContainingIgnoreCase(name);
+    }
+
+
 }
