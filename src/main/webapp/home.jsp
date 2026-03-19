@@ -108,8 +108,9 @@ a:hover{
     <td><%=emp.getEmpCity()%></td>
 
     <td>
-        <a href="editEmp/<%=emp.getId()%>">Edit</a> |
-        <a href="deleteEmp/<%=emp.getId()%>" onclick="return confirm('Are you sure you want to delete?')">Delete</a>
+       <a href="editEmp/<%=emp.getId()%>">Edit</a> |
+       <a href="deleteEmp/<%=emp.getId()%>" onclick="return confirm('Are you sure?')">Delete</a> |
+       <a href="view-emp/<%=emp.getId()%>" style="color:green;">View</a>
     </td>
 </tr>
 <%

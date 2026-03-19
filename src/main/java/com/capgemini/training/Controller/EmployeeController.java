@@ -73,8 +73,8 @@ public class EmployeeController {
 
 
 
-        @GetMapping("/view-emp")
-        public String viewEmp(@RequestParam int id, Model model){
+        @GetMapping("/view-emp/{id}")
+        public String viewEmp(@PathVariable int id, Model model){
             Employee emp = service.getEmployeeById(id);
             model.addAttribute("emp", emp);
             return "view-emp";
