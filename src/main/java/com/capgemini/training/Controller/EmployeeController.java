@@ -1,11 +1,13 @@
 package com.capgemini.training.Controller;
 
+
 import com.capgemini.training.Entity.Employee;
 import com.capgemini.training.Service.EmployeeService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.ui.Model;
 
 import java.util.List;
 
@@ -68,4 +70,13 @@ public class EmployeeController {
 
         return "edit-emp";
     }
+
+
+
+        @GetMapping("/view-emp")
+        public String viewEmp(@RequestParam int id, Model model){
+            Employee emp = service.getEmployeeById(id);
+            model.addAttribute("emp", emp);
+            return "view-emp";
+        }
 }
