@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="com.capgemini.training.Entity.Employee" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -127,58 +131,59 @@ td a{
     margin:0 5px;
 }
 </style>
+
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Edit Employee</title>
 </head>
+
 <body>
 
 <div class="container">
 
+<h2>Edit Employee</h2>
 
 <%
-    String msg = (String) request.getAttribute("message");
-    if(msg != null){
-%>
-    <p style="color:#ff6b6b; text-align:center; margin-bottom:10px;"><%=msg%></p>
-<%
-    }
+    Employee emp = (Employee) request.getAttribute("emp");
 %>
 
-<h2>Register</h2>
+<form action="/updateEmp" method="post">
 
-<form action="register" method="post">
+<!-- 🔥 Hidden ID (VERY IMPORTANT) -->
+<input type="hidden" name="id" value="<%=emp.getId()%>">
 
 <table>
 
 <tr>
-<td>Username</td>
-<td><input type="text" name="name"></td>
+<td>Name</td>
+<td><input type="text" name="empName" value="<%=emp.getEmpName()%>" required></td>
 </tr>
 
 <tr>
 <td>Email</td>
-<td><input type="email" name="email"></td>
+<td><input type="email" name="empEmail" value="<%=emp.getEmpEmail()%>" required></td>
 </tr>
 
 <tr>
-<td>Password</td>
-<td><input type="password" name="password"></td>
+<td>Contact</td>
+<td><input type="text" name="empContactNumber" value="<%=emp.getEmpContactNumber()%>" required></td>
 </tr>
 
 <tr>
-<td>Confirm Password</td>
-<td><input type="password" name="confirmpassword"></td>
+<td>City</td>
+<td><input type="text" name="empCity" value="<%=emp.getEmpCity()%>"></td>
 </tr>
 
 <tr>
 <td colspan="2">
-<input type="submit" value="Register">
+<input type="submit" value="Update Employee">
 </td>
 </tr>
 
 </table>
 
 </form>
+
+<a href="allEmp">Back to Employee List</a>
 
 </div>
 

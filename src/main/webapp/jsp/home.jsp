@@ -5,85 +5,128 @@
 <head>
 <style>
 body{
-    font-family: Arial, Helvetica, sans-serif;
-    background: linear-gradient(120deg,#2980b9,#6dd5fa);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
     height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
+    color:#e0e0e0;
 }
 
+/* Glass container */
 .container{
-    background:white;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
     padding:30px;
-    border-radius:10px;
-    box-shadow:0px 5px 20px rgba(0,0,0,0.2);
+    border-radius:15px;
+    box-shadow:0px 10px 30px rgba(0,0,0,0.5);
     width:750px;
+    border:1px solid rgba(255,255,255,0.1);
 }
 
 h2{
     text-align:center;
     margin-bottom:20px;
+    color:#ffffff;
+    letter-spacing:1px;
 }
 
+/* Table styling */
 table{
     width:100%;
     border-collapse: collapse;
+    overflow:hidden;
+    border-radius:10px;
 }
 
 th, td{
-    padding:10px;
+    padding:12px;
     text-align:center;
-    border:1px solid #ccc;
+    border-bottom:1px solid rgba(255,255,255,0.1);
 }
 
 th{
-    background-color:#2980b9;
-    color:white;
+    background: rgba(255,255,255,0.1);
+    color:#00d4ff;
+    text-transform: uppercase;
+    font-size:14px;
 }
 
+tr:hover{
+    background: rgba(255,255,255,0.05);
+}
+
+/* Links */
 a{
     text-decoration:none;
-    color:#2980b9;
+    color:#00d4ff;
     font-weight:bold;
+    transition:0.3s;
 }
 
 a:hover{
-    text-decoration:underline;
+    color:#1abc9c;
 }
 
+/* Add button */
 .add-btn{
     display:block;
     text-align:center;
-    margin-bottom:10px;
-    padding:8px;
-    background:#27ae60;
+    margin-bottom:15px;
+    padding:10px;
+    background: linear-gradient(45deg,#00c6ff,#0072ff);
     color:white;
-    border-radius:5px;
+    border-radius:8px;
+    transition:0.3s;
 }
 
-/* 🔥 Search Bar Styling */
+.add-btn:hover{
+    transform:scale(1.05);
+    box-shadow:0px 5px 15px rgba(0,0,0,0.5);
+}
+
+/* Search box */
 .search-box{
     text-align:center;
     margin-bottom:15px;
 }
 
 .search-box input{
-    padding:8px;
+    padding:10px;
     margin:5px;
-    border-radius:5px;
-    border:1px solid #ccc;
+    border-radius:8px;
+    border:none;
+    outline:none;
+    background: rgba(255,255,255,0.1);
+    color:white;
+    width:150px;
+}
+
+.search-box input::placeholder{
+    color:#ccc;
 }
 
 .search-box input[type=submit]{
-    background:#2980b9;
+    background: linear-gradient(45deg,#00c6ff,#0072ff);
     color:white;
-    border:none;
     cursor:pointer;
+    width:auto;
+    padding:10px 15px;
 }
 
 .search-box input[type=submit]:hover{
-    background:#1f6690;
+    transform:scale(1.05);
+}
+
+/* Message */
+h3{
+    color:#ff6b6b;
+}
+
+/* Action links spacing */
+td a{
+    margin:0 5px;
 }
 </style>
 

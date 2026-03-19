@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="com.capgemini.training.Entity.Employee" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -127,58 +131,60 @@ td a{
     margin:0 5px;
 }
 </style>
+
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>View Employee</title>
 </head>
+
 <body>
 
 <div class="container">
 
+<h2>Employee Details</h2>
 
 <%
-    String msg = (String) request.getAttribute("message");
-    if(msg != null){
+    Employee emp = (Employee) request.getAttribute("emp");
+    if(emp != null){
 %>
-    <p style="color:#ff6b6b; text-align:center; margin-bottom:10px;"><%=msg%></p>
-<%
-    }
-%>
-
-<h2>Register</h2>
-
-<form action="register" method="post">
 
 <table>
 
 <tr>
-<td>Username</td>
-<td><input type="text" name="name"></td>
+<td class="label">ID</td>
+<td class="value"><%=emp.getId()%></td>
 </tr>
 
 <tr>
-<td>Email</td>
-<td><input type="email" name="email"></td>
+<td class="label">Name</td>
+<td class="value"><%=emp.getEmpName()%></td>
 </tr>
 
 <tr>
-<td>Password</td>
-<td><input type="password" name="password"></td>
+<td class="label">Email</td>
+<td class="value"><%=emp.getEmpEmail()%></td>
 </tr>
 
 <tr>
-<td>Confirm Password</td>
-<td><input type="password" name="confirmpassword"></td>
+<td class="label">Contact</td>
+<td class="value"><%=emp.getEmpContactNumber()%></td>
 </tr>
 
 <tr>
-<td colspan="2">
-<input type="submit" value="Register">
-</td>
+<td class="label">City</td>
+<td class="value"><%=emp.getEmpCity()%></td>
 </tr>
 
 </table>
 
-</form>
+<%
+    } else {
+%>
+    <p style="text-align:center; color:red;">No Employee Found!</p>
+<%
+    }
+%>
+
+<a href="allEmp">Back to Employee List</a>
 
 </div>
 

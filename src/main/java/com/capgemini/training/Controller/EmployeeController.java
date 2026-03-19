@@ -71,10 +71,7 @@ public class EmployeeController {
         return "edit-emp";
     }
 
-
-
-
-        @GetMapping("/view-emp/{id}")
+    @GetMapping("/view-emp/{id}")
         public String viewEmp(@PathVariable int id, Model model){
             Employee emp = service.getEmployeeById(id);
             model.addAttribute("emp", emp);

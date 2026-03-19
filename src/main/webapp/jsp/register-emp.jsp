@@ -127,52 +127,44 @@ td a{
     margin:0 5px;
 }
 </style>
+
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Add Employee</title>
 </head>
+
 <body>
 
 <div class="container">
 
+<h2>Add Employee</h2>
 
-<%
-    String msg = (String) request.getAttribute("message");
-    if(msg != null){
-%>
-    <p style="color:#ff6b6b; text-align:center; margin-bottom:10px;"><%=msg%></p>
-<%
-    }
-%>
-
-<h2>Register</h2>
-
-<form action="register" method="post">
+<form action="addEmp" method="post">
 
 <table>
 
 <tr>
-<td>Username</td>
-<td><input type="text" name="name"></td>
+<td>Name</td>
+<td><input type="text" name="empName" required></td>
 </tr>
 
 <tr>
 <td>Email</td>
-<td><input type="email" name="email"></td>
+<td><input type="email" name="empEmail" required></td>
 </tr>
 
 <tr>
-<td>Password</td>
-<td><input type="password" name="password"></td>
+<td>Contact</td>
+<td><input type="text" name="empContactNumber" required></td>
 </tr>
 
 <tr>
-<td>Confirm Password</td>
-<td><input type="password" name="confirmpassword"></td>
+<td>City</td>
+<td><input type="text" name="empCity"></td>
 </tr>
 
 <tr>
 <td colspan="2">
-<input type="submit" value="Register">
+<input type="submit" value="Add Employee">
 </td>
 </tr>
 

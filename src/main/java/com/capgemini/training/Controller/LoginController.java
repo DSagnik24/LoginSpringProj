@@ -29,7 +29,7 @@ public class LoginController {
         if(user != null){
             return "redirect:/allEmp";
         }else{
-            return "error.jsp";
+            return "error-page";
         }
     }
 
@@ -63,7 +63,7 @@ public class LoginController {
 
             service.updatePassword(email,newpassword);
 
-            return "login.jsp";
+            return "login";
         }
 
         return "forgotPassword.jsp";
